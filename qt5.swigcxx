@@ -1,0 +1,13 @@
+%module(directors="1") main
+
+%{
+#include <QtCore/QCoreApplication>
+#include "test.hpp"
+%}
+
+%include "std_string.i"
+
+%feature("director");
+
+%include <QtCore/QCoreApplication>
+%include "test.hpp"
