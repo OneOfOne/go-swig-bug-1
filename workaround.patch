@@ -1,0 +1,23 @@
+diff --git a/src/cmd/go/build.go b/src/cmd/go/build.go
+--- a/src/cmd/go/build.go
++++ b/src/cmd/go/build.go
+@@ -2119,6 +2119,7 @@
+ 		}
+ 		if len(out) > 0 {
+ 			cgoCPPFLAGS = append(cgoCPPFLAGS, strings.Fields(string(out))...)
++			os.Setenv("CGO_CPPFLAGS", os.Getenv("CGO_CPPFLAGS")+string(out))
+ 		}
+ 		out, err = b.runOut(p.Dir, p.ImportPath, nil, "pkg-config", "--libs", pkgs)
+ 		if err != nil {
+@@ -2512,6 +2513,11 @@
+ 		"-o", obj + gccBase + gccExt,
+ 		"-outdir", obj,
+ 	}
++	for _, f := range cflags {
++		if len(f) > 3 && f[:2] == "-I" {
++			args = append(args, f)
++		}
++	}
+ 	if gccgo {
+ 		args = append(args, "-gccgo")
+ 		if pkgpath := gccgoPkgpath(p); pkgpath != "" {
