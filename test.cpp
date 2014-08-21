@@ -1,4 +1,3 @@
-#pragma once
 #include "test.hpp"
 
 CoreApp::CoreApp(int argc, char *argv[]) {
