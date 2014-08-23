@@ -1,8 +1,8 @@
 #pragma once
-#include <QtCore/QCoreApplication>
-
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 class CoreApp {
-	QCoreApplication *app;
+	QApplication *app;
 public:
 	CoreApp(int argc, char *argv[]);
 	void Exec();

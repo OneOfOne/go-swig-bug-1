@@ -1,7 +1,6 @@
 package qt5
 
 /*
-#cgo pkg-config: QtCore
-//x#cgo CXXFLAGS: -I/usr/include/qt
+#cgo pkg-config: Qt5Widgets
 */
 import "C"
